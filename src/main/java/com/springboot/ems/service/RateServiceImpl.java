@@ -24,8 +24,12 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public void saveRate(Rate rate) {
-        System.out.println(rate.getRate()+ "@@@@@@@@@@@@@@@@@@@@@");
-        // this.rateRepository.save(rate);
+        int total = rate.getCommunication()+rate.getAttendance()+rate.getCreativity()+rate.getIntegrity()+rate.getPunctuality()+rate.getProductivity();
+        Double avgRate = Double.valueOf(total)/6.0;
+        rate.setRate(avgRate);
+        this.rateRepository.save(rate);
+        System.out.println(rate.getFrom());
+        System.out.println("s2e1221312213123");
         // TODO Auto-generated method stub
         
     }

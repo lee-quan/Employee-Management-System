@@ -438,7 +438,7 @@
                         <td th:text="${c.avg}"></td>
                         <td th:text="${rates[iterStat.index].rate}">a</td>
                         <td>
-                          <button type="submit" class="btn btn-primary">
+                          <a th:href="'/rate/'+${c.id}" class="btn btn-primary">
                             Rate
                           </button>
                         </td>

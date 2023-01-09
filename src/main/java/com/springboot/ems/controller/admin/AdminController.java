@@ -3,6 +3,8 @@ package com.springboot.ems.controller.admin;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDate;
+import java.time.Month;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,6 +22,7 @@ import com.springboot.ems.model.Branch;
 import com.springboot.ems.model.Department;
 import com.springboot.ems.model.Rate;
 import com.springboot.ems.model.User;
+import com.springboot.ems.other.Rates;
 import com.springboot.ems.repo.RateRepository;
 import com.springboot.ems.repo.UserRepository;
 import com.springboot.ems.service.BranchService;
@@ -27,7 +30,6 @@ import com.springboot.ems.service.DepartmentService;
 import com.springboot.ems.service.RateService;
 import com.springboot.ems.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class AdminController {
@@ -193,15 +195,33 @@ public class AdminController {
         return "employee/employee_table_list";
     }
 
-
     @GetMapping("/rate/{id}")
-    public String showRateForm(@PathVariable (value="id") Integer id, Model model){
+    public String showRateForm(@PathVariable(value = "id") Integer id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        MyUserDetails userDetails = new MyUserDetails(userRepository.getUserByUsername(auth.getName().toString()));
+        User user = userService.getUserById(userDetails.getId());
+        Rate rate = rateService.getRateById(user.getId(), id);
+        System.out.println(user.getId()+"21312321321321312321");
+        if (!(rate instanceof Rate)) {
+            model.addAttribute("rate", new Rate(id, user.getId(), 0, 0, 0, 0, 0, 0));
+            model.addAttribute("ifRateExist", false);
+        } else {
+            model.addAttribute("rate", rate);
+            model.addAttribute("ifRateExist", true);
+        }
+
+        model.addAttribute("rates", Rates.values());
+        model.addAttribute("id", id);
+        model.addAttribute("user", user);
         return "employee/rate_form";
     }
+
     @PostMapping("/saveRating")
     public String saveRating(@ModelAttribute("rate") Rate rate) {
-        // // rateService.saveRate(rate);
-        // System.out.println(rate.getRate()+" @@@@@@@@@@@@@@");
+        System.out.println(rate.getFrom()+" #################### ");
+        rateService.saveRate(rate);
         return "redirect:/employee/employees";
     }
+
+    
 }

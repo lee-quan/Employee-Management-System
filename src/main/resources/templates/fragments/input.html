@@ -1,0 +1,19 @@
+<div class="form-row" th:fragment="input(type, title)">
+    <label for="validationTooltip01" th:text="${title}"  class="col-sm-2 col-form-label"></label><br />
+    <div class="rate col-sm-3">
+        <input th:id="${type}+'star5'" type="radio" aria-label="1 star" th:field="*{__${type}__}" value="5" />
+        <label th:for="${type+'star5'}" title="text"></label>
+        
+        <input th:id="${type}+'star4'" type="radio" aria-label="2 star" th:field="*{__${type}__}" value="4" />
+        <label th:for="${type+'star4'}" title="text"></label>
+        
+        <input th:id="${type}+'star3'" type="radio" aria-label="3 star" th:field="*{__${type}__}" value="3" />
+        <label th:for="${type+'star3'}" title="text"></label>
+        
+        <input th:id="${type}+'star2'" type="radio" aria-label="4 star" th:field="*{__${type}__}" value="2" />
+        <label th:for="${type+'star2'}" title="text"></label>
+        
+        <input th:id="${type}+'star1'" type="radio" aria-label="5 star" th:field="*{__${type}__}" value="1" />
+        <label th:for="${type+'star1'}" title="text"></label>
+    </div>
+  </div>
