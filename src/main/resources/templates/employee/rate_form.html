@@ -71,6 +71,10 @@
       .rate > label:hover ~ input:checked ~ label {
         color: #c59b08;
       }
+      canvas {
+        width: 400px !important;
+        height: 400px !important;
+      }
     </style>
   </head>
 
@@ -410,7 +414,7 @@
                 <div class="form-row">
                   <label
                     for="validationTooltip01"
-                    th:text="*{rate}+'/5'"
+                    th:text="*{rate}+'/5.00'"
                     class="col-sm-2 col-form-label"
                   ></label
                   ><br />

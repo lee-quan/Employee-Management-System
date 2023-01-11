@@ -1,5 +1,6 @@
 package com.springboot.ems.controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 // import java.time.LocalDate;
@@ -29,6 +30,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class EmployeeController {
+
+    DecimalFormat df = new DecimalFormat("#0.00");
 
     @Autowired
     private UserService userService;
@@ -62,7 +65,7 @@ public class EmployeeController {
             int id = userList.get(i).getId();
             Double avgrate = rateService.getAverageRate(id);
             if (avgrate instanceof Double) {
-                userList.get(i).setAvg(avgrate);
+                userList.get(i).setAvg(Double.parseDouble(df.format(avgrate)));
             } else {
                 userList.get(i).setAvg(0);
             }
@@ -107,8 +110,12 @@ public class EmployeeController {
         return "redirect:/admin/employees";
     }
 
+    @GetMapping("/getAllUsers")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
 
-    // Employee View () EmployeeList
+    // Employee View EmployeeList
     @GetMapping("/employee/employees")
     public String employeeDataTableForEmployee(Model model) {
         // Update average here
@@ -121,7 +128,7 @@ public class EmployeeController {
             int id = userList.get(i).getId();
             Double avgrate = rateService.getAverageRate(id);
             if (avgrate instanceof Double) {
-                userList.get(i).setAvg(avgrate);
+                userList.get(i).setAvg(Double.parseDouble(df.format(avgrate)));
             } else {
                 userList.get(i).setAvg(0);
             }
@@ -130,6 +137,10 @@ public class EmployeeController {
             Rate rate = rateService.getRateById(currUser.getId(), userList.get(i).getId());
             System.out.println(currUser.getId() + " +++++++++++++  " + userList.get(i).getId());
             if (rate instanceof Rate) {
+                // userList.get(i).setAvg(Double.parseDouble(df.format(avgrate)));
+
+                // rate.setRate(rate.getRate());
+                rate.setRate(Double.parseDouble(df.format(rate.getRate())));
                 rateList.add(rate);
             } else {
                 Rate newRate = new Rate(currUser.getId(), userList.get(i).getId());

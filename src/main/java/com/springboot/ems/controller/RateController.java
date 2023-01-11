@@ -1,5 +1,6 @@
 package com.springboot.ems.controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 // import java.time.LocalDate;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RateController {
 
+    DecimalFormat df = new DecimalFormat("#0.00");
+
     @Autowired
     private UserService userService;
 
@@ -44,11 +47,12 @@ public class RateController {
             model.addAttribute("rate", new Rate(id, user.getId(), 0, 0, 0, 0, 0, 0));
             model.addAttribute("ifRateExist", false);
         } else {
+            rate.setRate(Double.parseDouble(df.format(rate.getRate())));
             model.addAttribute("rate", rate);
             model.addAttribute("ifRateExist", true);
         }
 
-        model.addAttribute("rates", Rates.values());
+        // model.addAttribute("rates", Rates.values());
         model.addAttribute("id", id);
         model.addAttribute("user", user);
         return "employee/rate_form";
