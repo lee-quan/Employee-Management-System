@@ -15,9 +15,7 @@ import com.springboot.ems.model.User;
 public class MyUserDetails implements UserDetails {
 
 	private User user;
-	
-	private int test;
-	
+
 	public MyUserDetails(User user) {
 		this.user = user;
 	}

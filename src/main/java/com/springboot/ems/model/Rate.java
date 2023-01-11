@@ -2,22 +2,13 @@ package com.springboot.ems.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "rate")
@@ -27,6 +18,43 @@ public class Rate {
     @Column(name = "rate_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "rate_to")
+    private int to;
+
+    @Column(name = "rate_from")
+    private int from;
+
+    @Column(name = "rate_at_month")
+    private String atMonth;
+    @Column(name = "rate_at_year")
+    private String atYear;
+    @Column(name = "rate_at_day")
+    private String atDay;
+
+    @Column(name = "rate")
+    private Double rate;
+
+    @Column(name = "communication")
+    private int communication;
+
+    @Column(name = "productivity")
+    private int productivity;
+
+    @Column(name = "creativity")
+    private int creativity;
+
+    @Column(name = "integrity")
+    private int integrity;
+
+    @Column(name = "punctuality")
+    private int punctuality;
+
+    @Column(name = "attendance")
+    private int attendance;
+
+    @Column(name = "rate_at_date")
+    private Date rate_at_date;
 
     public int getCommunication() {
         return communication;
@@ -76,45 +104,16 @@ public class Rate {
         this.attendance = attendance;
     }
 
-    @Column(name = "rate_to")
-    private int to;
-
-    @Column(name = "rate_from")
-    private int from;
-
-    @Column(name = "rate_at")
-    private String at;
-
-    @Column(name = "rate")
-    private Double rate;
-
-    @Column(name = "communication")
-    private int communication;
-
-    @Column(name = "productivity")
-    private int productivity;
-
-    @Column(name = "creativity")
-    private int creativity;
-
-    @Column(name = "integrity")
-    private int integrity;
-
-    @Column(name = "punctuality")
-    private int punctuality;
-
-    @Column(name = "attendance")
-    private int attendance;
-
-    @Column(name = "rate_at_date")
-    private Date rate_at_date;
-    
     @PrePersist
-    void preInsert(){
-        if(this.rate_at_date == null){
+    void preInsert() {
+        if (this.rate_at_date == null) {
             this.rate_at_date = new Date();
+            this.atDay = new Date().getDay() + "";
+            this.atMonth = new Date().getMonth() + "";
+            this.atYear = new Date().getYear() + "";
         }
     }
+
     public Rate(int to, int from, int communication, int productivity, int creativity, int integrity,
             int punctuality, int attendance) {
         this.to = to;
@@ -168,20 +167,36 @@ public class Rate {
         this.from = from;
     }
 
-    public String getAt() {
-        return at;
-    }
-
-    public void setAt(String at) {
-        this.at = at;
-    }
-
     public Double getRate() {
         return rate;
     }
 
     public void setRate(Double rate) {
         this.rate = rate;
+    }
+
+    public String getAtMonth() {
+        return atMonth;
+    }
+
+    public void setAtMonth(String atMonth) {
+        this.atMonth = atMonth;
+    }
+
+    public String getAtYear() {
+        return atYear;
+    }
+
+    public void setAtYear(String atYear) {
+        this.atYear = atYear;
+    }
+
+    public String getAtDay() {
+        return atDay;
+    }
+
+    public void setAtDay(String atDay) {
+        this.atDay = atDay;
     }
 
 }

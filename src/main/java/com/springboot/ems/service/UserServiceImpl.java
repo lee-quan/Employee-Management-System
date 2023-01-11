@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
-import com.springboot.ems.controller.MyUserDetails;
+// import com.springboot.ems.controller.MyUserDetails;
 import com.springboot.ems.model.Role;
 import com.springboot.ems.model.User;
 import com.springboot.ems.repo.RoleRepository;
@@ -107,9 +107,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getAllUsersNotWithRating() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		MyUserDetails userDetails = new MyUserDetails(userRepository.getUserByUsername(auth.getName().toString()));
-		return this.userRepository.getAllEmployeesNotWithRating(userDetails.getId());
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	// @Override
+	// public List<User> getAllUsersNotWithRating() {
+	// 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	// 	// MyUserDetails userDetails = new MyUserDetails(userRepository.getUserByUsername(auth.getName().toString()));
+	// 	// return this.userRepository.getAllEmployeesNotWithRating(userDetails.getId());
+	// }
 
 }
