@@ -73,6 +73,7 @@
                         <th>Mobile Number</th>
                         <th>Designation</th>
                         <th>Gender</th>
+                        <th>Average Rating (/5)</th>
                         <th>Edit</th>
                         <th>Delete</th>
                       </tr>
@@ -85,48 +86,11 @@
                         <th>Mobile Number</th>
                         <th>Designation</th>
                         <th>Gender</th>
+                        <th>Average Rating (/5)</th>
                         <th>Edit</th>
                         <th>Delete</th>
                       </tr>
                     </tfoot>
-                    <!-- <tbody>
-                      <c:forEach var="employee" items="${listEmployees}">
-                        <tr>
-                          <td>${employee.firstName}</td>
-                          <td>${employee.email}</td>
-                          <td>${employee.nic}</td>
-                          <td>${employee.mobileNo}</td>
-                          <td>${employee.designation}</td>
-                          <td>${employee.gender}</td>
-
-                          <td>
-                            <a
-                              href="viewEmployee?id=${employee.id}"
-                              class="btn btn-info btn-icon-split"
-                            >
-                              <span class="icon text-white-50">
-                                <i class="fas fa fa-eye"></i>
-                              </span>
-                              <span class="text">View</span>
-                            </a>
-                          </td>
-                          <td>
-                            <a
-                              href="deleteEmployee?id=${employee.id}"
-                              class="btn btn-danger btn-icon-split"
-                            >
-                              <button
-                                id="delete_btn"
-                                class="icon text-white-50"
-                              >
-                                <i class="fas fa-trash"></i>
-                              </button>
-                              <span class="text">Delete</span>
-                            </a>
-                          </td>
-                        </tr>
-                      </c:forEach>
-                    </tbody> -->
                     <tbody>
                       <tr th:each="emp : ${employees}">
                         <td th:text="${emp.firstName}"></td>
@@ -135,6 +99,7 @@
                         <td th:text="${emp.mobileNo}"></td>
                         <td th:text="${emp.designation}"></td>
                         <td th:text="${emp.gender}"></td>
+                        <td th:text="${emp.avg}"></td>
                         <td>
                           <a
                             th:href="@{'viewEmployee?id='+${emp.id}}"

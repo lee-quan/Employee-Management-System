@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <title>add risk2</title>
+
+    </head>
+    <body>
+	
+	<p>Try to add several risks with different checkboxes and radio buttons selected on each risk and then click edit to see original selections restored.</p>
+	<div>
+       <div th:each="cat,iterStat : ${risks}" >
+
+           <a th:style="${iterStat.odd}? 'color:#15999e'"  th:text="| ${cat.name}  &nbsp;  &nbsp; |" >Risk Name </a>
+
+           <a th:href="@{|/risks/${cat.id}/edit|}" style="font-size:14px">edit</a>
+           <span> &nbsp;  &nbsp;</span>
+           <a th:href="@{|/riskstable/${cat.id}/edit|}" style="font-size:14px">edit in table form</a>
+			
+			<br/>  <br/>                  
+      </div>
+   
+	</div>
+<br/><br/>
+<a href="/risks/add" style="font-size:14px">add new risk</a>
+<span> &nbsp;  &nbsp;</span>
+<a href="/riskstable/add" style="font-size:14px">add new risk - checkboxes in table form</a>
+
+</body>
+
+</html>

@@ -1,10 +1,9 @@
-package com.springboot.ems.controller.admin;
+package com.springboot.ems.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.time.LocalDate;
-import java.time.Month;
+// import java.time.LocalDate;
+// import java.time.Month;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,9 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.springboot.ems.controller.MyUserDetails;
-import com.springboot.ems.model.Branch;
-import com.springboot.ems.model.Department;
 import com.springboot.ems.model.Rate;
 import com.springboot.ems.model.User;
 import com.springboot.ems.other.Rates;
@@ -32,7 +28,7 @@ import com.springboot.ems.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class AdminController {
+public class EmployeeController {
 
     @Autowired
     private UserService userService;
@@ -61,7 +57,19 @@ public class AdminController {
     // Employee List
     @GetMapping("/admin/employees")
     public String employeeDataTable(Model model) {
-        model.addAttribute("employees", userService.getAllUsersNot());
+        List<User> userList = userService.getAllUsers();
+        for (int i = 0; i < userList.size(); i++) {
+            int id = userList.get(i).getId();
+            Double avgrate = rateService.getAverageRate(id);
+            if (avgrate instanceof Double) {
+                userList.get(i).setAvg(avgrate);
+            } else {
+                userList.get(i).setAvg(0);
+            }
+            userService.saveUser(userList.get(i));
+
+        }
+        model.addAttribute("employees", userList);
         return "admin/employee_table_list";
     }
 
@@ -99,66 +107,6 @@ public class AdminController {
         return "redirect:/admin/employees";
     }
 
-    @GetMapping("/admin/departments")
-    public String departmentDataTable(Model model) {
-        model.addAttribute("departments", departmentService.getAllDepartments());
-        return "admin/department_table_list";
-    }
-
-    // Add New Department
-    @GetMapping("/admin/newDepartment")
-    public String addNewDepartment(Model model) {
-        Department department = new Department();
-        model.addAttribute("department", department);
-        model.addAttribute("branches", branchService.getAllBranches());
-        return "admin/new_department";
-    }
-
-    @PostMapping("/saveDepartment")
-    public String saveEmployee(@ModelAttribute("department") Department department) {
-        departmentService.saveDepartment(department);
-        return "redirect:/admin/departments";
-    }
-
-    // View Department by ID
-    @GetMapping("/admin/viewDepartment")
-    public String viewDepartment(@RequestParam int id, Model model) {
-
-        Department department = departmentService.getDepartmentById(id);
-        model.addAttribute("branches", branchService.getAllBranches());
-
-        model.addAttribute("department", department);
-        return "admin/view_department";
-    }
-
-    @GetMapping("/admin/branches")
-    public String branchDataTable(Model model) {
-        model.addAttribute("branches", branchService.getAllBranches());
-        return "admin/branch_table_list";
-    }
-
-    // Add New Branch
-    @GetMapping("/admin/newBranch")
-    public String addNewBranch(Model model) {
-        Branch branch = new Branch();
-        model.addAttribute("branch", branch);
-        return "admin/new_branch";
-    }
-
-    @PostMapping("/saveBranch")
-    public String saveBranch(@ModelAttribute("branch") Branch branch) {
-        branchService.saveBranch(branch);
-        return "redirect:/admin/branches";
-    }
-
-    // View Department by ID
-    @GetMapping("/admin/viewBranch")
-    public String viewBranch(@RequestParam int id, Model model) {
-
-        Branch branch = branchService.getBranchById(id);
-        model.addAttribute("branch", branch);
-        return "admin/view_branch";
-    }
 
     // Employee View () EmployeeList
     @GetMapping("/employee/employees")
@@ -195,33 +143,4 @@ public class AdminController {
         return "employee/employee_table_list";
     }
 
-    @GetMapping("/rate/{id}")
-    public String showRateForm(@PathVariable(value = "id") Integer id, Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        MyUserDetails userDetails = new MyUserDetails(userRepository.getUserByUsername(auth.getName().toString()));
-        User user = userService.getUserById(userDetails.getId());
-        Rate rate = rateService.getRateById(user.getId(), id);
-        System.out.println(user.getId()+"21312321321321312321");
-        if (!(rate instanceof Rate)) {
-            model.addAttribute("rate", new Rate(id, user.getId(), 0, 0, 0, 0, 0, 0));
-            model.addAttribute("ifRateExist", false);
-        } else {
-            model.addAttribute("rate", rate);
-            model.addAttribute("ifRateExist", true);
-        }
-
-        model.addAttribute("rates", Rates.values());
-        model.addAttribute("id", id);
-        model.addAttribute("user", user);
-        return "employee/rate_form";
-    }
-
-    @PostMapping("/saveRating")
-    public String saveRating(@ModelAttribute("rate") Rate rate) {
-        System.out.println(rate.getFrom()+" #################### ");
-        rateService.saveRate(rate);
-        return "redirect:/employee/employees";
-    }
-
-    
 }
