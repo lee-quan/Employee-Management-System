@@ -11,9 +11,10 @@ import javax.persistence.Table;
 @Table(name = "branches")
 public class Branch {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	// [id=0, branchName=wqewqewqewqe, bphoneNo=21312321, branchEmail=null, branchLocation=null, branchAddress=null, branchPCode=null, branchFaxNo=null]
 	@Column(name = "branch_name")
 	private String branchName;
 	
@@ -106,5 +107,6 @@ public class Branch {
 				+ ", branchPCode=" + branchPCode + ", branchFaxNo=" + branchFaxNo + "]";
 	}
 
+	
 	
 }

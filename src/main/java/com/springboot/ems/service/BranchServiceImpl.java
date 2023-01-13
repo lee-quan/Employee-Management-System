@@ -23,6 +23,7 @@ public class BranchServiceImpl implements BranchService {
 
 	@Override
 	public void saveBranch(Branch branch) {
+		System.out.println(branch.toString()+" TOSTRING");
 		this.branchRepository.save(branch);
 	}
 

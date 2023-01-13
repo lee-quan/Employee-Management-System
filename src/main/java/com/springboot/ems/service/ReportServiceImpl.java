@@ -28,7 +28,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 public class ReportServiceImpl implements ReportService {
 
     String time = new SimpleDateFormat("yyyy-MMMM").format(java.util.Calendar.getInstance().getTime());
-
+    String path = "/Users/leequan/Documents/CBSE/ems/report/";
     @Autowired
     private UserService userService;
 
@@ -39,7 +39,7 @@ public class ReportServiceImpl implements ReportService {
     public void generateDepartmentByBranchReport() throws FileNotFoundException, JRException {
         List<DepartmentReportDto> list = reportRepository.generateDepartmentByBranchReport();
 
-        String path = "/Users/leequan/Documents/CBSE/ems/report/";
+
         // System.out.println(reportList.toString());
         File file = ResourceUtils.getFile("classpath:DepartmentsReport.jrxml");
         JasperReport jasper = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -58,7 +58,6 @@ public class ReportServiceImpl implements ReportService {
         // TODO Auto-generated method stub
         List<EmployeeReportDto> list = reportRepository.generateEmployeeReport();
 
-        String path = "/Users/leequan/Documents/CBSE/ems/report/";
         // System.out.println(reportList.toString());
         File file = ResourceUtils.getFile("classpath:Employees.jrxml");
         System.out.println(list.size() + "SIZE");
@@ -78,7 +77,6 @@ public class ReportServiceImpl implements ReportService {
         List<DepartmentReportDto> reportList = reportRepository.generateDepartmentByBranchReport();
         List<EmployeeReportDto> userList = reportRepository.generateEmployeeReport();
 
-        String path = "/Users/leequan/Documents/CBSE/ems/report/";
         // System.out.println(reportList.toString());
         File file = ResourceUtils.getFile("classpath:EmployeesByBranchReport.jrxml");
         System.out.println(reportList.size() + "SIZE");
