@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springboot.ems.model.Department;
 import com.springboot.ems.model.Rate;
 import com.springboot.ems.model.User;
-import com.springboot.ems.other.Rates;
 import com.springboot.ems.repo.RateRepository;
 import com.springboot.ems.repo.UserRepository;
 import com.springboot.ems.service.BranchService;
@@ -90,7 +90,6 @@ public class EmployeeController {
 
         User employee = userService.getUserById(id);
         model.addAttribute("departments", departmentService.getAllDepartments());
-
         model.addAttribute("employee", employee);
         return "admin/view_employee";
     }
@@ -106,6 +105,9 @@ public class EmployeeController {
 
     @PostMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") User employee) {
+        System.out.println(employee.getDepartment_id()+"iddddd");;
+        // Department department = departmentService.getDepartmentById(employee.getDepartment_id());
+        // employee.setDepartment(department.getDepartmentName()+", "+department.getDepartment_branch());
         userService.saveUser(employee);
         return "redirect:/admin/employees";
     }

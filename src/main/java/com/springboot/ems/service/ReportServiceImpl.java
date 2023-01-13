@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
+import com.springboot.ems.dto.ReportDto;
 import com.springboot.ems.model.User;
+import com.springboot.ems.repo.ReportRepository;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -26,14 +28,18 @@ public class ReportServiceImpl implements ReportService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ReportRepository reportRepository;
+
     @Override
     public String generateReport(String type) throws FileNotFoundException, JRException {
-        List<User> userList = userService.getAllUsers();
+        List<ReportDto> reportList = reportRepository.generateReportForDepartments();
+        // List<User> userList = userService.getAllUsers();
         String path = "/Users/leequan/Documents/CBSE/ems/report/";
 
         File file = ResourceUtils.getFile("classpath:Employees.jrxml");
         JasperReport jasper = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(userList);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(reportList);
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("Employee", "List");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasper, params, dataSource);
@@ -42,6 +48,11 @@ public class ReportServiceImpl implements ReportService {
         else if(type.equalsIgnoreCase("pdf")) JasperExportManager.exportReportToPdfFile(jasperPrint, path+"//employees.pdf");
         
         return "";
+    }
+
+    @Override
+    public List<ReportDto> getReportDto() {
+        return reportRepository.generateReportForDepartments();
     }
     
 }

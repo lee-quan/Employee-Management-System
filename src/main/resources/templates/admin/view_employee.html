@@ -65,6 +65,10 @@
               method="POST"
             >
               <input type="hidden" th:field="*{id}" />
+              <input type="hidden" th:field="*{avg}" />
+              <input type="hidden" th:field="*{username}" />
+              <input type="hidden" th:field="*{password}" />
+              <input type="hidden" th:field="*{enabled}" />
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="validationTooltip01">First name</label>
@@ -249,11 +253,11 @@
                     id="department"
                     name="department"
                     disabled="disabled"
-                    th:field="*{department}"
+                    th:field="*{department_id}"
                   >
                     <option
                       th:each="dep : ${departments}"
-                      th:value="${dep.departmentName}+', '+${dep.department_branch}"
+                      th:value="${dep.id}"
                       th:text="${dep.departmentName}+', '+${dep.department_branch}"
                     ></option>
                   </select>

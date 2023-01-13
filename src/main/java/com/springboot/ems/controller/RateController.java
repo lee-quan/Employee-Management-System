@@ -14,9 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import com.springboot.ems.model.Rate;
 import com.springboot.ems.model.User;
-import com.springboot.ems.other.Rates;
 import com.springboot.ems.repo.UserRepository;
 import com.springboot.ems.service.RateService;
 import com.springboot.ems.service.UserService;

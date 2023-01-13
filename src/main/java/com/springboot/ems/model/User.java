@@ -72,6 +72,9 @@ public class User {
 
 	private Collection<Role> roles;
 
+	@Column(name = "department_id")
+	private int department_id;
+
 	public User() {
 	}
 
@@ -231,6 +234,14 @@ public class User {
 
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
+	}
+
+	public int getDepartment_id() {
+		return department_id;
+	}
+
+	public void setDepartment_id(int department_id) {
+		this.department_id = department_id;
 	}
 
 }
