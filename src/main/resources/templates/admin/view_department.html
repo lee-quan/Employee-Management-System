@@ -136,13 +136,14 @@
                   <label for="validationTooltipDPBranch">Branch</label>
                   <select
                     class="custom-select"
+                    disabled="disabled"
                     id="department_add_branch"
-                    th:field="*{department_branch}"
+                    th:field="*{branch_id}"
                     required
                   >
                     <option
                       th:each="branch : ${branches}"
-                      th:value="${branch.branchName}"
+                      th:value="${branch.id}"
                       th:text="${branch.branchName}"
                     ></option>
                   </select>

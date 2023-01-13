@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springboot.ems.model.Branch;
 import com.springboot.ems.model.Department;
 
 import com.springboot.ems.service.BranchService;
@@ -39,7 +40,10 @@ public class DepartmentController {
 
     @PostMapping("/saveDepartment")
     public String saveEmployee(@ModelAttribute("department") Department department) {
+        Branch branch = branchService.getBranchById(department.getBranch_id());
+        department.setDepartment_branch(branch.getBranchName());
         departmentService.saveDepartment(department);
+        
         return "redirect:/admin/departments";
     }
 
@@ -48,6 +52,7 @@ public class DepartmentController {
     public String viewDepartment(@RequestParam int id, Model model) {
 
         Department department = departmentService.getDepartmentById(id);
+
         model.addAttribute("branches", branchService.getAllBranches());
 
         model.addAttribute("department", department);

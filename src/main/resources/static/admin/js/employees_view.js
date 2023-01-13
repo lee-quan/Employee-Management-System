@@ -47,7 +47,7 @@ function editDepartment() {
     document.getElementById('department_email').removeAttribute('readonly');
     document.getElementById('department_address').removeAttribute('readonly');
     document.getElementById('department_ententionNo').removeAttribute('readonly');
-    document.getElementById('department_branch').removeAttribute('readonly');
+    document.getElementById('department_add_branch').removeAttribute('disabled');
  
     document.getElementById('department_view_btn_text').innerText = "Cancel";
 

@@ -75,6 +75,8 @@ public class User {
 	@Column(name = "department_id")
 	private int department_id;
 
+	private int branch_id;
+	
 	public User() {
 	}
 
@@ -242,6 +244,14 @@ public class User {
 
 	public void setDepartment_id(int department_id) {
 		this.department_id = department_id;
+	}
+
+	public int getBranch_id() {
+		return branch_id;
+	}
+
+	public void setBranch_id(int branch_id) {
+		this.branch_id = branch_id;
 	}
 
 }

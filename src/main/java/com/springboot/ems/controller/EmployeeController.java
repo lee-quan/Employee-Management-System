@@ -105,9 +105,8 @@ public class EmployeeController {
 
     @PostMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") User employee) {
-        System.out.println(employee.getDepartment_id()+"iddddd");;
-        // Department department = departmentService.getDepartmentById(employee.getDepartment_id());
-        // employee.setDepartment(department.getDepartmentName()+", "+department.getDepartment_branch());
+        Department department = departmentService.getDepartmentById(employee.getDepartment_id());
+        employee.setDepartment(department.getDepartmentName()+", "+department.getDepartment_branch());
         userService.saveUser(employee);
         return "redirect:/admin/employees";
     }

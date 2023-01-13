@@ -1,3 +1,24 @@
+ADD INDEX `branch_id_idx` (`branch_id` ASC) VISIBLE;
+;
+ALTER TABLE `jeewaeducation`.`departments` 
+ADD CONSTRAINT `branch_id`
+  FOREIGN KEY (`branch_id`)
+  REFERENCES `jeewaeducation`.`branches` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `jeewaeducation`.`users` 
+ADD INDEX `department_id_idx` (`department_id` ASC) VISIBLE;
+;
+ALTER TABLE `jeewaeducation`.`users` 
+ADD CONSTRAINT `department_id`
+  FOREIGN KEY (`department_id`)
+  REFERENCES `jeewaeducation`.`departments` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+
 INSERT INTO `jeewaeducation`.`users` (`user_id`, `enabled`, `password`, `username`, `avg`) VALUES (1, 1, '$2a$10$yFgtGkrBnp9q/yopl4L6NerEXacCQ3H6n9ZYgHpoFA9VsmJUQWdp2', 'admin', 0);
 INSERT INTO `Jeewaeducation`.`roles` (`role_id`, `name`) VALUES ('1', 'ADMIN');
 INSERT INTO `Jeewaeducation`.`roles` (`role_id`, `name`) VALUES ('2', 'EMPLOYEE');
