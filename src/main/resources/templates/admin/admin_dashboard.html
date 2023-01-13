@@ -55,7 +55,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">All Employees</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" th:text="'All Employees ('+${userSize}+')'"></div>
                       
                     </div>
                     <div class="col-auto">
@@ -74,7 +74,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">All Departments</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" th:text="'All Departments ('+${departmentSize}+')'"></div>
                       
                     </div>
                     <div class="col-auto">
@@ -93,7 +93,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">All Branches</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" th:text="'All Branches ('+${branchSize}+')'"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-home"></i>
@@ -102,30 +102,7 @@
                 </div>
                 </a>
               </div>
-            </div>
-        
-        
-            <!-- Get Employee Report -->
-            <!-- <div class="col-xl-3 col-md-6 mb-4">
-            <a href="/admin/employee-datatable/export/pdf">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Get Employee Report</div>
-                    
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list"></i>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-            </div> -->
-
-
-           
+            </div>     
           </div>
 
         </div>

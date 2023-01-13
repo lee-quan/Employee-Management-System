@@ -13,6 +13,7 @@ import com.springboot.ems.model.Department;
 import com.springboot.ems.service.BranchService;
 import com.springboot.ems.service.DepartmentService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class DepartmentController {
@@ -43,7 +44,7 @@ public class DepartmentController {
         Branch branch = branchService.getBranchById(department.getBranch_id());
         department.setDepartment_branch(branch.getBranchName());
         departmentService.saveDepartment(department);
-        
+
         return "redirect:/admin/departments";
     }
 
@@ -59,4 +60,11 @@ public class DepartmentController {
         return "admin/view_department";
     }
 
+    // Delete Employee by ID
+    @RequestMapping("/admin/deleteDepartment")
+    public String deleteDepartment(@RequestParam int id) {
+
+        departmentService.deleteDepartmentById(id);
+        return "redirect:/admin/departments";
+    }
 }

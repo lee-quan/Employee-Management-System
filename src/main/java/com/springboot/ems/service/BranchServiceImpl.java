@@ -41,7 +41,6 @@ public class BranchServiceImpl implements BranchService {
 	@Override
 	public void deleteBranchById(int id) {
 		this.branchRepository.deleteById(id);
-		
 	}
 
 }

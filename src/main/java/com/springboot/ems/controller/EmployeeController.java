@@ -53,14 +53,21 @@ public class EmployeeController {
 
     // Dashboard Page
     @RequestMapping("/admin/dashboard")
-    public String employeeDash() {
+    public String employeeDash(Model model) {
+        int userSize = userService.getAllUsers().size();
+        int departmentSize = departmentService.getAllDepartments().size();
+        int branchSize = branchService.getAllBranches().size();
+        
+        model.addAttribute("userSize", userSize);
+        model.addAttribute("departmentSize", departmentSize);
+        model.addAttribute("branchSize", branchSize);
         return "admin/admin_dashboard";
     }
 
     // Employee List
     @GetMapping("/admin/employees")
     public String employeeDataTable(Model model) {
-        List<User> userList = userService.getAllUsers();
+        List<User> userList = userService.getAllUsersNot();
         for (int i = 0; i < userList.size(); i++) {
             int id = userList.get(i).getId();
             Double avgrate = rateService.getAverageRate(id);

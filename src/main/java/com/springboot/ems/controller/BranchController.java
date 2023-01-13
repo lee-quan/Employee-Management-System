@@ -14,6 +14,7 @@ import com.springboot.ems.model.Branch;
 import com.springboot.ems.service.BranchService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BranchController {
@@ -50,6 +51,12 @@ public class BranchController {
         return "admin/view_branch";
     }
 
-    
+    // Delete Employee by ID
+    @RequestMapping("/admin/deleteBranch")
+    public String deleteBranch(@RequestParam int id) {
+        // System.out.println("12321312321321321321312321");
+        branchService.deleteBranchById(id);
+        return "redirect:/admin/branches";
+    }
 
 }
