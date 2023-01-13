@@ -219,9 +219,9 @@
                     class="custom-select"
                     id="department"
                     name="department"
-                    th:field="*{department}"
+                    th:field="*{department_id}"
                   >
-                  <option th:each="dep : ${departments}" th:value="${dep.departmentName}+', '+${dep.department_branch}" th:text="${dep.departmentName}+', '+${dep.department_branch}"></option>
+                  <option th:each="dep : ${departments}" th:value="${dep.id}" th:text="${dep.departmentName}+', '+${dep.department_branch}"></option>
                   </select>
                   <div class="invalid-tooltip">
                     Please Select Valid Department.

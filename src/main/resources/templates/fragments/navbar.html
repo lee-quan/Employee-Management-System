@@ -248,7 +248,37 @@
         <h6 class="dropdown-header">Get Reports</h6>
         <a
           class="dropdown-item d-flex align-items-center"
-          href="/admin/export/pdf"
+          href="/admin/export/all"
+        >
+          <div class="mr-3">
+            <div class="icon-circle bg-primary">
+              <i class="fas fa-file-alt text-white"></i>
+            </div>
+          </div>
+          <div>
+            <span class="font-weight-bold"
+              >Generate All Reports for this month</span
+            >
+          </div>
+        </a>
+        <a
+          class="dropdown-item d-flex align-items-center"
+          href="/admin/export/departmentReport"
+        >
+          <div class="mr-3">
+            <div class="icon-circle bg-primary">
+              <i class="fas fa-file-alt text-white"></i>
+            </div>
+          </div>
+          <div>
+            <span class="font-weight-bold"
+              >Generate Department Report for this month</span
+            >
+          </div>
+        </a>
+        <a
+          class="dropdown-item d-flex align-items-center"
+          href="/admin/export/employeeReport"
         >
           <div class="mr-3">
             <div class="icon-circle bg-primary">
@@ -258,25 +288,24 @@
           <div>
             <div class="small text-gray-500">PDF Format</div>
             <span class="font-weight-bold"
-              >A new month Employee report(PDF) is ready to download!</span
+              >Generate Employee Report for this month</span
             >
           </div>
         </a>
         <a
           class="dropdown-item d-flex align-items-center"
-          href="/admin/export/html"
+          href="/admin/export/employeeReportByBranch"
         >
           <div class="mr-3">
-            <div class="icon-circle bg-success">
-              <i
-                class="fas fa-file-code text-white"
-                style="font-size: 14px"
-              ></i>
+            <div class="icon-circle bg-primary">
+              <i class="fas fa-file-alt text-white"></i>
             </div>
           </div>
           <div>
-            <div class="small text-gray-500">HTML Format</div>
-            A new month Employee report(HTML) is ready to download!
+            <div class="small text-gray-500">PDF Format</div>
+            <span class="font-weight-bold"
+              >Generate Employee Report (by Branch) for this month</span
+            >
           </div>
         </a>
       </div>

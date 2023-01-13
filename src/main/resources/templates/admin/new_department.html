@@ -128,23 +128,15 @@
 
                 <div class="col-md-6 mb-3 mt-4">
                   <label for="validationTooltipDPBranch">Branch</label>
-                  <!-- <input
-                  type="text"
-                  class="form-control"
-                  id="department_branch"
-                  th:field="*{department_branch}"
-                  placeholder="Department Entention No"
-                  required
-                /> -->
                   <select
                     class="custom-select"
                     id="department_add_branch"
-                    th:field="*{department_branch}"
+                    th:field="*{branch_id}"
                     required
                   >
                     <option
                       th:each="branch : ${branches}"
-                      th:value="${branch.branchName}"
+                      th:value="${branch.id}"
                       th:text="${branch.branchName}"
                     ></option>
                   </select>

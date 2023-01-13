@@ -20,8 +20,18 @@ public class ReportController {
 
     @GetMapping("admin/export/{type}")
     public String export(@PathVariable String type, Model model) throws FileNotFoundException, JRException {
-        
-        model.addAttribute("listEmployees", reportService.generateReport(type));
-        return "redirect:/admin/employees";
+        if (type.equalsIgnoreCase("all")) {
+            reportService.generateDepartmentByBranchReport();
+            reportService.generateEmployeeReport();
+            reportService.generateEmployeeReportByBranch();
+        } else if (type.equalsIgnoreCase("departmentReport")) {
+            reportService.generateDepartmentByBranchReport();
+        } else if (type.equalsIgnoreCase("employeeReport")) {
+            reportService.generateEmployeeReport();
+        } else if (type.equalsIgnoreCase("employeeReportByBranch")) {
+            reportService.generateEmployeeReportByBranch();
+        }
+
+        return "redirect:/admin/dashboard";
     }
 }

@@ -25,6 +25,8 @@ public class Department {
 	
 	@Column(name = "department_branch")
 	private String department_branch;
+
+	private int branch_id;
 	
 	@Column(name = "department_address")
 	private String department_address;
@@ -95,6 +97,14 @@ public class Department {
 				+ ", departmentEmail=" + departmentEmail + ", department_branch=" + department_branch
 				+ ", department_address=" + department_address + ", department_ententionNo=" + department_ententionNo
 				+ "]";
+	}
+
+	public int getBranch_id() {
+		return branch_id;
+	}
+
+	public void setBranch_id(int branch_id) {
+		this.branch_id = branch_id;
 	}
 	
 
