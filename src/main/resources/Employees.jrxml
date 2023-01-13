@@ -99,7 +99,7 @@
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[Perforamance]]></text>
+				<text><![CDATA[Performance]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

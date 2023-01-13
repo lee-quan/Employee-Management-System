@@ -28,7 +28,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 public class ReportServiceImpl implements ReportService {
 
     String time = new SimpleDateFormat("yyyy-MMMM").format(java.util.Calendar.getInstance().getTime());
-    String path = "/Users/leequan/Documents/CBSE/Employee-Management-System/report/";
+    String path = "E:/UM/CBSE project/report";
     @Autowired
     private UserService userService;
 
