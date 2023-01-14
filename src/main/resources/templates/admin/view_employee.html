@@ -33,6 +33,12 @@
     />
 
     <link th:href="@{../admin/js/temp/toastr.min.css}" rel="stylesheet" />
+    <style>
+      canvas {
+        width: 400px !important;
+        height: 400px !important;
+      }
+    </style>
   </head>
 
   <body id="page-top">
@@ -285,6 +291,9 @@
                 Update
               </button>
             </form>
+            <div>
+              <canvas id="myChart"></canvas>
+            </div>
           </div>
           <!-- /.container-fluid -->
         </div>
@@ -378,6 +387,7 @@
     <!-- Update Button custom scripts -->
     <script th:src="@{../admin/js/temp/jquery-3.5.1.min.js}"></script>
     <script th:src="@{../admin/js/temp/toastr.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
       $("#employee_cancel_edit").on("click", function () {
@@ -400,6 +410,72 @@
         };
         toastr["success"]("Employee Added Successful", "Successfully Added!");
       });
+    </script>
+
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+
+      var communication = /*[[${rate.communication}]]*/ "communication";
+      var punctuality = /*[[${rate.punctuality}]]*/ "punctuality";
+      var integrity = /*[[${rate.integrity}]]*/ "integrity";
+      var productivity = /*[[${rate.productivity}]]*/ "productivity";
+      var creativity = /*[[${rate.creativity}]]*/ "creativity";
+      var attendance = /*[[${rate.attendance}]]*/ "attendance";
+
+      const data = {
+        labels: [
+          "Communication",
+          "Punctuality",
+          "Integrity",
+          "Productivity",
+          "Creativity",
+          "Attendance",
+        ],
+        datasets: [
+          {
+            label: "Performance",
+            data: [
+              communication,
+              punctuality,
+              integrity,
+              productivity,
+              creativity,
+              attendance,
+            ],
+            // fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+
+      const ctx = document.getElementById("myChart");
+
+      const config = {
+        type: "radar",
+        data: data,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3,
+            },
+          },
+          scales: {
+            r: {
+              suggestedMin: 0,
+              suggestedMax: 5,
+            },
+          },
+        },
+      };
+
+      new Chart(ctx, config);
+
+      /*]]>*/
     </script>
   </body>
 </html>

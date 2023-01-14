@@ -126,6 +126,17 @@ public class Rate {
         this.attendance = attendance;
     }
 
+    public Rate(int to, int communication, int productivity, int creativity, int integrity,
+            int punctuality, int attendance) {
+        this.to = to;
+        this.communication = communication;
+        this.productivity = productivity;
+        this.creativity = creativity;
+        this.integrity = integrity;
+        this.punctuality = punctuality;
+        this.attendance = attendance;
+    }
+
     public Rate() {
     }
 
