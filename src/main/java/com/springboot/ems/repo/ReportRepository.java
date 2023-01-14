@@ -18,7 +18,7 @@ public interface ReportRepository extends JpaRepository<Rate, Integer> {
 
 
     // SELECT u.user_id, u.first_name, u.last_name, d.department_name, d.department_branch, u.designation, u.avg FROM users u JOIN departments d on u.department_id = d.id ORDER BY d.branch_id
-@Query("SELECT new com.springboot.ems.dto.EmployeeReportDto (u.id, u.firstName, u.lastName, d.departmentName, d.branch_id, d.department_branch, u.designation, u.avg) FROM User u JOIN Department d ON u.department_id = d.id WHERE u.id !=1 ORDER BY d.branch_id")
+@Query("SELECT new com.springboot.ems.dto.EmployeeReportDto (u.id, u.firstName, u.lastName, d.departmentName, d.branch_id, d.department_branch, u.designation, u.avg) FROM User u JOIN Department d ON u.department_id = d.id WHERE u.id !=1 ORDER BY d.branch_id, u.avg desc")
     List<EmployeeReportDto> generateEmployeeReportByBranch();
 
 @Query("SELECT new com.springboot.ems.dto.EmployeeReportDto (u.id, u.firstName, u.lastName, d.departmentName, d.branch_id, d.department_branch, u.designation, u.avg) FROM User u JOIN Department d ON u.department_id = d.id WHERE u.id !=1 ORDER BY u.avg desc ")
