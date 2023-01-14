@@ -28,9 +28,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 public class ReportServiceImpl implements ReportService {
 
     String time = new SimpleDateFormat("yyyy-MMMM").format(java.util.Calendar.getInstance().getTime());
-    String path = "E:/UM/CBSE project/report";
-    @Autowired
-    private UserService userService;
+    String path = "/Users/leequan/Documents/CBSE/Employee-Management-System/report/";
 
     @Autowired
     private ReportRepository reportRepository;
@@ -55,10 +53,7 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public void generateEmployeeReport() throws FileNotFoundException, JRException {
-        // TODO Auto-generated method stub
         List<EmployeeReportDto> list = reportRepository.generateEmployeeReport();
-
-        // System.out.println(reportList.toString());
         File file = ResourceUtils.getFile("classpath:Employees.jrxml");
         System.out.println(list.size() + "SIZE");
         JasperReport jasper = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -74,14 +69,11 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public void generateEmployeeReportByBranch() throws FileNotFoundException, JRException {
-        List<DepartmentReportDto> reportList = reportRepository.generateDepartmentByBranchReport();
-        List<EmployeeReportDto> userList = reportRepository.generateEmployeeReport();
-
-        // System.out.println(reportList.toString());
+        List<EmployeeReportDto> list = reportRepository.generateEmployeeReportByBranch();
+        System.out.println(list.toString());
         File file = ResourceUtils.getFile("classpath:EmployeesByBranchReport.jrxml");
-        System.out.println(reportList.size() + "SIZE");
         JasperReport jasper = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(userList);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(list);
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("Employee", "List");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasper, params, dataSource);
