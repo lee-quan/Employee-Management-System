@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springboot.ems.dto.RateDto;
 import com.springboot.ems.model.Department;
 import com.springboot.ems.model.Rate;
 import com.springboot.ems.model.User;
@@ -94,8 +95,13 @@ public class EmployeeController {
     // View Employee by ID
     @GetMapping("/admin/viewEmployee")
     public String viewEmployee(@RequestParam int id, Model model) {
-
         User employee = userService.getUserById(id);
+        RateDto rateDto = rateService.getAvgRateById(id);
+        if(rateDto instanceof RateDto){
+            model.addAttribute("rate",rateDto);
+        }else{
+            model.addAttribute("rate", new RateDto(0.0,0.0,0.0,0.0,0.0,0.0));
+        }
         model.addAttribute("departments", departmentService.getAllDepartments());
         model.addAttribute("employee", employee);
         return "admin/view_employee";

@@ -3,6 +3,7 @@ package com.springboot.ems.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springboot.ems.dto.RateDto;
 import com.springboot.ems.model.Rate;
 import com.springboot.ems.repo.RateRepository;
 
@@ -32,5 +33,10 @@ public class RateServiceImpl implements RateService {
         System.out.println("s2e1221312213123");
         // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public RateDto getAvgRateById(int id) {
+        return this.rateRepository.getAvgRateByID(id);
     }
 }
