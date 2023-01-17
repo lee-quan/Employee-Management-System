@@ -16,7 +16,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
+@Getter
+@Setter
+@ToString
 @Table(name = "users")
 public class User {
 
@@ -100,147 +107,4 @@ public class User {
 		this.avg = 0;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public double getAvg() {
-		return avg;
-	}
-
-	public void setAvg(double avg) {
-		this.avg = avg;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getNic() {
-		return nic;
-	}
-
-	public void setNic(String nic) {
-		this.nic = nic;
-	}
-
-	public String getMobileNo() {
-		return mobileNo;
-	}
-
-	public void setMobileNo(String mobileNo) {
-		this.mobileNo = mobileNo;
-	}
-
-	public String getDesignation() {
-		return designation;
-	}
-
-	public void setDesignation(String designation) {
-		this.designation = designation;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
-
-	public String getJoinedDate() {
-		return joinedDate;
-	}
-
-	public void setJoinedDate(String joinedDate) {
-		this.joinedDate = joinedDate;
-	}
-
-	public String getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Collection<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
-	}
-
-	public int getDepartment_id() {
-		return department_id;
-	}
-
-	public void setDepartment_id(int department_id) {
-		this.department_id = department_id;
-	}
 }

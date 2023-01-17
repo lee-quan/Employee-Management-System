@@ -1,5 +1,6 @@
 package com.springboot.ems.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -11,7 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "rate")
 public class Rate {
 
@@ -57,61 +63,14 @@ public class Rate {
     @Column(name = "rate_at_date")
     private Date rate_at_date;
 
-    public int getCommunication() {
-        return communication;
-    }
-
-    public void setCommunication(int communication) {
-        this.communication = communication;
-    }
-
-    public int getProductivity() {
-        return productivity;
-    }
-
-    public void setProductivity(int productivity) {
-        this.productivity = productivity;
-    }
-
-    public int getCreativity() {
-        return creativity;
-    }
-
-    public void setCreativity(int creativity) {
-        this.creativity = creativity;
-    }
-
-    public int getIntegrity() {
-        return integrity;
-    }
-
-    public void setIntegrity(int integrity) {
-        this.integrity = integrity;
-    }
-
-    public int getPunctuality() {
-        return punctuality;
-    }
-
-    public void setPunctuality(int punctuality) {
-        this.punctuality = punctuality;
-    }
-
-    public int getAttendance() {
-        return attendance;
-    }
-
-    public void setAttendance(int attendance) {
-        this.attendance = attendance;
-    }
 
     @PrePersist
     void preInsert() {
         if (this.rate_at_date == null) {
             this.rate_at_date = new Date();
-            this.atDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)+"";
-            this.atMonth = Calendar.getInstance().get(Calendar.MONTH)+"";
-            this.atYear = Calendar.getInstance().get(Calendar.MONTH)+"";
+            this.atDay = new SimpleDateFormat("dd").format(Calendar.getInstance().getTime());
+            this.atMonth = new SimpleDateFormat("MMMM").format(Calendar.getInstance().getTime());
+            this.atYear = Calendar.getInstance().getWeekYear()+"";
         }
     }
 
@@ -145,70 +104,6 @@ public class Rate {
         this.rate = 0.0;
         this.to = to;
         this.from = from;
-    }
-
-    public Date getRate_at_date() {
-        return rate_at_date;
-    }
-
-    public void setRate_at_date(Date rate_at_date) {
-        this.rate_at_date = rate_at_date;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getTo() {
-        return to;
-    }
-
-    public void setTo(Integer to) {
-        this.to = to;
-    }
-
-    public Integer getFrom() {
-        return from;
-    }
-
-    public void setFrom(Integer from) {
-        this.from = from;
-    }
-
-    public Double getRate() {
-        return rate;
-    }
-
-    public void setRate(Double rate) {
-        this.rate = rate;
-    }
-
-    public String getAtMonth() {
-        return atMonth;
-    }
-
-    public void setAtMonth(String atMonth) {
-        this.atMonth = atMonth;
-    }
-
-    public String getAtYear() {
-        return atYear;
-    }
-
-    public void setAtYear(String atYear) {
-        this.atYear = atYear;
-    }
-
-    public String getAtDay() {
-        return atDay;
-    }
-
-    public void setAtDay(String atDay) {
-        this.atDay = atDay;
     }
 
 }

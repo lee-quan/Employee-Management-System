@@ -9,9 +9,11 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "branches")
 public class Branch {
@@ -39,79 +41,5 @@ public class Branch {
 	private String branchPCode;
 	
 	@Column(name = "branch_faxNo")
-	private String branchFaxNo;
-
-	// public int getId() {
-	// 	return id;
-	// }
-
-	// public void setId(int id) {
-	// 	this.id = id;
-	// }
-
-	// public String getBranchName() {
-	// 	return branchName;
-	// }
-
-	// public void setBranchName(String branchName) {
-	// 	this.branchName = branchName;
-	// }
-
-	// public String getBphoneNo() {
-	// 	return bphoneNo;
-	// }
-
-	// public void setBphoneNo(String bphoneNo) {
-	// 	this.bphoneNo = bphoneNo;
-	// }
-
-	// public String getBranchEmail() {
-	// 	return branchEmail;
-	// }
-
-	// public void setBranchEmail(String branchEmail) {
-	// 	this.branchEmail = branchEmail;
-	// }
-
-	// public String getBranchLocation() {
-	// 	return branchLocation;
-	// }
-
-	// public void setBranchLocation(String branchLocation) {
-	// 	this.branchLocation = branchLocation;
-	// }
-
-	// public String getBranchAddress() {
-	// 	return branchAddress;
-	// }
-
-	// public void setBranchAddress(String branchAddress) {
-	// 	this.branchAddress = branchAddress;
-	// }
-
-	// public String getBranchPCode() {
-	// 	return branchPCode;
-	// }
-
-	// public void setBranchPCode(String branchPCode) {
-	// 	this.branchPCode = branchPCode;
-	// }
-
-	// public String getBranchFaxNo() {
-	// 	return branchFaxNo;
-	// }
-
-	// public void setBranchFaxNo(String branchFaxNo) {
-	// 	this.branchFaxNo = branchFaxNo;
-	// }
-
-	@Override
-	public String toString() {
-		return "Branch [id=" + id + ", branchName=" + branchName + ", bphoneNo=" + bphoneNo + ", branchEmail="
-				+ branchEmail + ", branchLocation=" + branchLocation + ", branchAddress=" + branchAddress
-				+ ", branchPCode=" + branchPCode + ", branchFaxNo=" + branchFaxNo + "]";
-	}
-
-	
-	
+	private String branchFaxNo;	
 }
