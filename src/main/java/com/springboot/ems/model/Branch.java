@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "branches")
 public class Branch {
@@ -36,69 +41,69 @@ public class Branch {
 	@Column(name = "branch_faxNo")
 	private String branchFaxNo;
 
-	public int getId() {
-		return id;
-	}
+	// public int getId() {
+	// 	return id;
+	// }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	// public void setId(int id) {
+	// 	this.id = id;
+	// }
 
-	public String getBranchName() {
-		return branchName;
-	}
+	// public String getBranchName() {
+	// 	return branchName;
+	// }
 
-	public void setBranchName(String branchName) {
-		this.branchName = branchName;
-	}
+	// public void setBranchName(String branchName) {
+	// 	this.branchName = branchName;
+	// }
 
-	public String getBphoneNo() {
-		return bphoneNo;
-	}
+	// public String getBphoneNo() {
+	// 	return bphoneNo;
+	// }
 
-	public void setBphoneNo(String bphoneNo) {
-		this.bphoneNo = bphoneNo;
-	}
+	// public void setBphoneNo(String bphoneNo) {
+	// 	this.bphoneNo = bphoneNo;
+	// }
 
-	public String getBranchEmail() {
-		return branchEmail;
-	}
+	// public String getBranchEmail() {
+	// 	return branchEmail;
+	// }
 
-	public void setBranchEmail(String branchEmail) {
-		this.branchEmail = branchEmail;
-	}
+	// public void setBranchEmail(String branchEmail) {
+	// 	this.branchEmail = branchEmail;
+	// }
 
-	public String getBranchLocation() {
-		return branchLocation;
-	}
+	// public String getBranchLocation() {
+	// 	return branchLocation;
+	// }
 
-	public void setBranchLocation(String branchLocation) {
-		this.branchLocation = branchLocation;
-	}
+	// public void setBranchLocation(String branchLocation) {
+	// 	this.branchLocation = branchLocation;
+	// }
 
-	public String getBranchAddress() {
-		return branchAddress;
-	}
+	// public String getBranchAddress() {
+	// 	return branchAddress;
+	// }
 
-	public void setBranchAddress(String branchAddress) {
-		this.branchAddress = branchAddress;
-	}
+	// public void setBranchAddress(String branchAddress) {
+	// 	this.branchAddress = branchAddress;
+	// }
 
-	public String getBranchPCode() {
-		return branchPCode;
-	}
+	// public String getBranchPCode() {
+	// 	return branchPCode;
+	// }
 
-	public void setBranchPCode(String branchPCode) {
-		this.branchPCode = branchPCode;
-	}
+	// public void setBranchPCode(String branchPCode) {
+	// 	this.branchPCode = branchPCode;
+	// }
 
-	public String getBranchFaxNo() {
-		return branchFaxNo;
-	}
+	// public String getBranchFaxNo() {
+	// 	return branchFaxNo;
+	// }
 
-	public void setBranchFaxNo(String branchFaxNo) {
-		this.branchFaxNo = branchFaxNo;
-	}
+	// public void setBranchFaxNo(String branchFaxNo) {
+	// 	this.branchFaxNo = branchFaxNo;
+	// }
 
 	@Override
 	public String toString() {
