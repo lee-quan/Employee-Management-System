@@ -75,15 +75,6 @@
 				<text><![CDATA[Department]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="290" y="7" width="79" height="18" forecolor="#000000" uuid="49df44a6-7b19-4ed9-bad6-d72e05921578">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4789ecb5-169b-4f45-8f88-3d15258114b7"/>
-				</reportElement>
-				<textElement>
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Branch]]></text>
-			</staticText>
-			<staticText>
 				<reportElement style="Column header" x="370" y="7" width="79" height="18" forecolor="#000000" uuid="4194b6fe-62e9-4964-bcb7-609694a1c225">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bd91ab99-b4b9-402e-a53f-50cbde49db0d"/>
 				</reportElement>
@@ -132,16 +123,7 @@
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{department_name}]]></textFieldExpression>
-				</textField>
-				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="289" y="-1" width="80" height="18" uuid="83e930b4-2bac-4f86-8495-57fb86c299c9">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4789ecb5-169b-4f45-8f88-3d15258114b7"/>
-					</reportElement>
-					<textElement>
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{branch_name}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{department_name}+", "+$F{branch_name}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="370" y="0" width="79" height="18" uuid="444d58d4-695b-428d-82bd-e9ed3bc3446c">

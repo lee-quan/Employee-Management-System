@@ -11,15 +11,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 // import com.springboot.ems.controller.MyUserDetails;
-import com.springboot.ems.model.Role;
 import com.springboot.ems.model.User;
-import com.springboot.ems.repo.RoleRepository;
 import com.springboot.ems.repo.UserRepository;
 
 import net.sf.jasperreports.engine.JRException;
