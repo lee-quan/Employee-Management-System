@@ -1,5 +1,6 @@
 package com.springboot.ems.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -108,9 +109,9 @@ public class Rate {
     void preInsert() {
         if (this.rate_at_date == null) {
             this.rate_at_date = new Date();
-            this.atDay = new Date().getDay() + "";
-            this.atMonth = new Date().getMonth() + "";
-            this.atYear = new Date().getYear() + "";
+            this.atDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)+"";
+            this.atMonth = Calendar.getInstance().get(Calendar.MONTH)+"";
+            this.atYear = Calendar.getInstance().get(Calendar.MONTH)+"";
         }
     }
 
